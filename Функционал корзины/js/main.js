@@ -18,7 +18,6 @@ for (var i = 0; i < price.length; i++) {
 	}
 }
 
-
 btnSumm.addEventListener('click', function () {
 	let summ = arrayBacket.reduce(function (acc, elem) {
 		return acc + elem
