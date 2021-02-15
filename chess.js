@@ -1,3 +1,5 @@
+// Задание 1
+
 const head = document.querySelector('head');
 let style = document.createElement('style');
 head.append(style);
@@ -6,6 +8,18 @@ style.textContent = `
     padding: 0;
     margin: 0;
     font-family: sans-serif;
+}
+
+.item{
+    border: 1px solid #000;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.btn{
+    width: 150px;
 }
 
 .place{
@@ -105,6 +119,26 @@ for (var i = 1; i <= 9; i++) {
         letters.textContent = 'H';
     } else if (numLetter == 9) {
         letters.textContent = 'I';
-    } 
+    }
     letters.style.fontSize = '32px';
+}
+
+// Задание 2
+const bin = document.querySelector('.bin');
+let arrayBin = [];
+let binStroke = document.createElement('span');
+bin.append(binStroke);
+let btn = document.querySelectorAll('btn');
+let n = 0; // сколько товаров
+for (var i = 0; i<= btn.length; i++) {
+    let btnAll = btn[i];
+    btnAll.onclick = function () {
+        n++;
+        console.log(n);
+    }
+}
+if (arrayBin.length == 0) {
+    binStroke.textContent = 'Корзина пуста';
+} else {
+    binStroke.textContent = 'В корзине: ' + n + ' товаров на сумму ' + m + ' рублей';
 }
