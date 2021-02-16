@@ -10,6 +10,12 @@ style.textContent = `
     font-family: sans-serif;
 }
 
+body {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
 .item{
     border: 1px solid #000;
     width: 400px;
@@ -20,6 +26,10 @@ style.textContent = `
 
 .btn{
     width: 150px;
+}
+
+.count {
+    width: 100px;
 }
 
 .place{
@@ -128,17 +138,37 @@ const bin = document.querySelector('.bin');
 let arrayBin = [];
 let binStroke = document.createElement('span');
 bin.append(binStroke);
-let btn = document.querySelectorAll('btn');
-let n = 0; // сколько товаров
-for (var i = 0; i<= btn.length; i++) {
-    let btnAll = btn[i];
-    btnAll.onclick = function () {
-        n++;
-        console.log(n);
+let item = document.querySelectorAll('.item');
+const btn_1 = document.querySelectorAll('.btn')[0];
+const btn_2 = document.querySelectorAll('.btn')[1];
+const btn_3 = document.querySelectorAll('.btn')[2];
+let n = 0;
+btn_1.addEventListener('click', () => {
+    let price = btn_1.getAttribute('data-price');
+    price = Number(price);
+    arrayBin.push(price);
+    n++;
+})
+btn_2.addEventListener('click', () => {
+    let price = btn_2.getAttribute('data-price');
+    price = Number(price);
+    arrayBin.push(price);
+    n++;
+})
+btn_3.addEventListener('click', () => {
+    let price = btn_3.getAttribute('data-price');
+    price = Number(price);
+    arrayBin.push(price);
+    n++;
+})
+const count = document.querySelector('.count');
+count.addEventListener('click', function () {
+    let m = arrayBin.reduce(function (acc, elem) {
+        return acc + elem;
+    }, 0)
+    if (arrayBin.length >= 1) {
+        binStroke.textContent = 'В корзине: ' + n + ' товаров на сумму ' + m + ' рублей'
+    } else {
+        binStroke.textContent = 'Корзина пуста';
     }
-}
-if (arrayBin.length == 0) {
-    binStroke.textContent = 'Корзина пуста';
-} else {
-    binStroke.textContent = 'В корзине: ' + n + ' товаров на сумму ' + m + ' рублей';
-}
+})
